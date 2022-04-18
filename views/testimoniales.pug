@@ -1,0 +1,35 @@
+extends ./index
+
+block contenido
+    main.container.mt-5 
+        h1.text-center.mt-5 #{pagina}
+        //- p= JSON.stringify(testimoniales)
+        
+        blockquote.text-center Experiencias de  Todos los clientes
+        include bloque_testimonial
+
+        .row
+            .col-md-12
+                h4.d-block.w-100.text-center Agrega un testimonial
+
+                if(errores)
+                    each error in errores  
+                        .alert.col.alert-danger.text-center= error.mensaje
+
+            .row.justify-content-center.col
+                .col-md-8
+                    form(action="/testimoniales" method="POST") 
+                        .form-group
+                            label(for="nombre") nombre 
+                            input#nombre(type="text" , placeholder="Tu nombre", name="nombre", 
+                            class="form-control", value= nombre)
+                        .form-group
+                            label(for="emial") Correo Electronico 
+                            input#email(type="text" , placeholder="Tu correo", name="email",
+                            class="form-control", value= email)
+                        .form-group
+                            label(for="mensaje ") Mensaje 
+                            textarea#mensaje(class="form-control", name="mensaje", placeholder="Tu correo",rows= 3,
+                            )= mensaje
+
+                        input.btn.btn-success.btn-block(type="submit")

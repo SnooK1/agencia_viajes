@@ -1,0 +1,19 @@
+.row.proximos-viajes 
+
+        //- intera en el arreglo json
+        each viaje in todosviajes  
+            .col-md-6.col-lg-4.mb-4
+                .card 
+                    img.card-img-top(src=`img/destinos_${viaje.imagen}.jpg`, alt="")
+                    .card-body
+                        h2= viaje.titulo
+                        p
+                            |#{viaje.fecha_ida} - #{viaje.fecha_vuelta}
+
+                        p
+                            |#{viaje.disponibles} Disponibles
+
+                        p= viaje.descripcion.substr(0,110) +"..."
+                        a(href=`viajes/${viaje.slug}`, class="btn btn-success btn-block") Mas informacion
+
+    
